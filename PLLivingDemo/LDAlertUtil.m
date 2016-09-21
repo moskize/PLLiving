@@ -25,4 +25,33 @@
     [parentViewController presentViewController:av animated:true completion:nil];
 }
 
++ (void)alertParentViewController:(UIViewController *)parentViewController
+                            title:(NSString *)title description:(NSString *)description
+                         complete:(void (^)(NSString *text))complete
+{
+    UIAlertController *av = [UIAlertController alertControllerWithTitle:title
+                                                                message:description
+                                                         preferredStyle:UIAlertControllerStyleAlert];
+    __block UITextField *inputTextFiled = nil;
+    [av addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        inputTextFiled = textField;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [av addAction:[UIAlertAction actionWithTitle:LDString("OK")
+                                           style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             if (!inputTextFiled.text || inputTextFiled.text.length == 0) {
+                                                 complete(nil);
+                                             } else {
+                                                 complete(inputTextFiled.text);
+                                             }
+                                         }]];
+    [av addAction:[UIAlertAction actionWithTitle:LDString("Cancel")
+                                           style:UIAlertActionStyleCancel
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             complete(nil);
+                                         }]];
+    [parentViewController presentViewController:av animated:true completion:nil];
+}
+
 @end

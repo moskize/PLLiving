@@ -10,6 +10,14 @@
 
 #import "LDBlurViewController.h"
 
+@protocol LDUserSettingViewControllerDelegate <NSObject>
+
+- (void)setTestPlayURL:(NSString *)testPlayURL;
+
+@end
+
 @interface LDUserSettingViewController : LDBlurViewController
+
+@property (nonatomic, weak) id<LDUserSettingViewControllerDelegate> delegate;
 
 @end

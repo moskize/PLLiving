@@ -11,6 +11,8 @@
 
 "login-by-wechat" = "微信登录";
 "I-see" = "知道了";
+"OK" = "确定";
+"Cancel" = "取消";
 
 // Login and Register
 "login-by-phone-number" = "Sign In with Phone Number";
@@ -64,6 +66,7 @@
 // Dialog
 "confirm-logout" = "确定要注销用户？";
 "logout-would-reset-username" = "你将重新登陆。";
+"please-input-test-play-url" = "请输入测试流 URL 地址";
 "sure-to-report-this-broadcast" = "Are you sure you want to report this broadcast?";
 "report-content" = "Report Inappropriate Content";
 "logout" = "Logout";

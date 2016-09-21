@@ -13,5 +13,8 @@
 + (void)alertParentViewController:(UIViewController *)parentViewController
                             title:(NSString *)title error:(NSString *)errorMsg
                          complete:(void (^)())complete;
++ (void)alertParentViewController:(UIViewController *)parentViewController
+                            title:(NSString *)title description:(NSString *)description
+                         complete:(void (^)(NSString *text))complete;
 
 @end

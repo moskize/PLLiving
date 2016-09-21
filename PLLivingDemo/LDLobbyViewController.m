@@ -26,7 +26,9 @@ typedef enum {
 
 @class _LDLobbyTimerKeeper;
 
-@interface LDLobbyViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface LDLobbyViewController () <LDUserSettingViewControllerDelegate,
+                                     UITableViewDataSource,
+                                     UITableViewDelegate>
 
 @property (nonatomic, strong) _LDLobbyTimerKeeper *timerKeeper;
 @property (nonatomic, assign) BOOL isNotEnterAnyRoom;
@@ -35,6 +37,8 @@ typedef enum {
 @property (nonatomic, strong) LDViewConstraintsStateManager *startBroadcastingConstraints;
 @property (nonatomic, assign) BOOL tableViewTouchTop;
 @property (nonatomic, assign) BOOL tableViewTouchBottom;
+
+@property (nonatomic, strong) NSString *testPlayURL;
 
 @property (nonatomic, strong) NSArray<LDRoomItem *> *roomItems;
 @property (nonatomic, strong) UIView *emptyBackgroundView;
@@ -69,6 +73,11 @@ typedef enum {
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)setTestPlayURL:(NSString *)testPlayURL
+{
+    self.testPlayURL = testPlayURL;
 }
 
 - (void)viewDidLoad
@@ -360,6 +369,7 @@ typedef enum {
 - (void)_onPressedSetting:(UIButton *)button
 {
     LDUserSettingViewController *viewController = [[LDUserSettingViewController alloc] initWithPresentOrientation:LDBlurViewControllerPresentOrientation_FromLeft];
+    viewController.delegate = self;
     [self.basicViewController popupViewController:viewController animated:NO completion:nil];
     [viewController playAppearAnimationWithComplete:nil];
 }

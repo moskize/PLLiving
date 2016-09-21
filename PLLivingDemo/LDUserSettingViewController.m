@@ -10,6 +10,7 @@
 #import "LDSettingNavigationController.h"
 #import "LDAppSettingViewController.h"
 #import "LDURLImageView.h"
+#import "LDAlertUtil.h"
 #import "LDUser.h"
 
 @interface LDUserSettingViewController()
@@ -134,7 +135,7 @@
         [panel addSubview:button];
         [button setTitle:LDString("test-play") forState:UIControlStateNormal];
         [button setTintColor:[UIColor whiteColor]];
-        [button addTarget:self action:@selector(_onPressedSettingButton:)
+        [button addTarget:self action:@selector(_onPressedTestPlayButton:)
          forControlEvents:UIControlEventTouchUpInside];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(mediumLine.mas_bottom);
@@ -161,6 +162,16 @@
     LDSettingNavigationController *navigationController = [[LDSettingNavigationController alloc] init];
     [navigationController pushViewController:[[LDAppSettingViewController alloc] init] animated:NO];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)_onPressedTestPlayButton:(id)sender
+{
+    [LDAlertUtil alertParentViewController:self title:LDString("please-input-test-play-url")
+                               description:@"" complete:^(NSString *text) {
+        if (text) {
+            [self.delegate setTestPlayURL:text];
+        }
+    }];
 }
 
 - (void)_onPressedCloseButton:(id)sender
