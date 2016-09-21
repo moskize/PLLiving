@@ -11,9 +11,11 @@
 #import "LDRoomItem.h"
 #import "LDURLImageView.h"
 
+#define kPreviewCount 12
+
 @interface LDLobbyRoomView ()
-@property (nonatomic, strong) LDURLImageView *previewImageView;
 @property (nonatomic, strong) LDURLImageView *anchorImageView;
+@property (nonatomic, strong) UIImageView *previewImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *authorNameLabel;
 @end
@@ -27,10 +29,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.previewImageView = ({
-            LDURLImageView *imageView = [[LDURLImageView alloc] init];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.layer.masksToBounds = YES;
-            
+            UIImageView *imageView = [[UIImageView alloc] init];
             [self.contentView addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.left.right.and.bottom.equalTo(self.contentView);
@@ -103,8 +102,10 @@
 
 - (void)resetViewWithRoomItem:(LDRoomItem *)roomItem at:(NSUInteger)index
 {
+    NSString *previewName = [NSString stringWithFormat:@"preview%lu", index % kPreviewCount];
+    
+    self.previewImageView.image = [UIImage imageNamed:previewName];
     self.anchorImageView.url = [NSURL URLWithString:roomItem.authorIconURL];
-    self.previewImageView.url = [NSURL URLWithString:roomItem.previewURL];
     self.titleLabel.text = roomItem.title;
     self.authorNameLabel.text = roomItem.authorName;
 }
