@@ -69,7 +69,9 @@
 "logout" = "Logout";
 "cancel" = "Cancel";
 "share" = "Share";
-"setting" = "Setting";
 "settings" = "Settings";
 "share-get-more-attention" = "Share, get more attention.";
+
+"setting" = "设置";
+"test-play" = "测试流播放";
 

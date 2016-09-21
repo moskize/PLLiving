@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIImageView *userIconImageView;
 @property (nonatomic, strong) UILabel *userNameLabel;
 @property (nonatomic, strong) UIButton *settingButton;
+@property (nonatomic, strong) UIButton *testPlayButton;
 @end
 
 @implementation LDUserSettingViewController
@@ -92,22 +93,9 @@
         [panel addSubview:line];
         line.backgroundColor = kcolSplitLine;
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(userIconContainer.mas_bottom).with.offset(120);
+            make.top.equalTo(panel).with.offset(452);
             make.left.equalTo(panel).with.offset(17);
-            make.right.equalTo(panel).with.offset(-3);
-            make.height.mas_equalTo(1);
-        }];
-        line;
-    });
-    
-    UIView *bottomLine = ({
-        UIView *line = [[UIView alloc] init];
-        [panel addSubview:line];
-        line.backgroundColor = kcolSplitLine;
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(topLine).with.offset(56);
-            make.left.equalTo(panel).with.offset(17);
-            make.right.equalTo(panel).with.offset(-3);
+            make.right.equalTo(panel).with.offset(-13);
             make.height.mas_equalTo(1);
         }];
         line;
@@ -118,25 +106,52 @@
         [panel addSubview:button];
         [button setTitle:LDString("setting") forState:UIControlStateNormal];
         [button setTintColor:kcolTextButton];
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        button.contentEdgeInsets = UIEdgeInsetsMake(0, 24, 0, 0);
         [button addTarget:self action:@selector(_onPressedSettingButton:)
          forControlEvents:UIControlEventTouchUpInside];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(topLine.mas_bottom);
-            make.bottom.equalTo(bottomLine.mas_top);
+            make.height.mas_equalTo(56);
             make.left.and.right.equalTo(panel);
         }];
         button;
     });
     
+    UIView *mediumLine = ({
+        UIView *line = [[UIView alloc] init];
+        [panel addSubview:line];
+        line.backgroundColor = kcolSplitLine;
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.settingButton.mas_bottom);
+            make.left.equalTo(panel).with.offset(17);
+            make.right.equalTo(panel).with.offset(-13);
+            make.height.mas_equalTo(1);
+        }];
+        line;
+    });
+    
+    self.testPlayButton = ({
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [panel addSubview:button];
+        [button setTitle:LDString("test-play") forState:UIControlStateNormal];
+        [button setTintColor:kcolTextButton];
+        [button addTarget:self action:@selector(_onPressedSettingButton:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(mediumLine.mas_bottom);
+            make.height.mas_equalTo(56);
+            make.left.and.right.equalTo(panel);
+        }];
+        button;
+    });
     ({
-        UIImageView *arrow = [[UIImageView alloc] init];
-        [panel addSubview:arrow];
-        arrow.image = [UIImage imageNamed:@"arrows-right"];
-        [arrow mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(panel).with.offset(-17);
-            make.centerY.equalTo(self.settingButton);
+        UIView *line = [[UIView alloc] init];
+        [panel addSubview:line];
+        line.backgroundColor = kcolSplitLine;
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.testPlayButton.mas_bottom);
+            make.left.equalTo(panel).with.offset(17);
+            make.right.equalTo(panel).with.offset(-13);
+            make.height.mas_equalTo(1);
         }];
     });
 }
