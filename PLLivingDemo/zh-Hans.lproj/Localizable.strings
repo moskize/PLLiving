@@ -13,6 +13,8 @@
 "I-see" = "知道了";
 "OK" = "确定";
 "Cancel" = "取消";
+"turn-on-XXX" = "开%@";
+"turn-off-XXX" = "关%@";
 
 // Login and Register
 "login-by-phone-number" = "Sign In with Phone Number";

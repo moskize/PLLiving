@@ -8,6 +8,9 @@
 
 #define GetColor(str) [UIColor colorWithHexString:@str]
 
+#define kcolButtonOnState GetColor("ED5757")
+#define kcolButtonOffState GetColor("4A4A4A")
+
 #define kcolLightButtonBackground GetColor("ED5757")
 #define kcolTextButton GetColor("030303")
 #define kcolTextNotImport GetColor("FFB3B3B3")

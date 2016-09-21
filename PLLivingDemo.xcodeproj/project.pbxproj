@@ -100,6 +100,7 @@
 		D29B49131D928D7F00259928 /* preview8@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29B48F91D928D7F00259928 /* preview8@3x.png */; };
 		D29B49141D928D7F00259928 /* preview9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29B48FA1D928D7F00259928 /* preview9@2x.png */; };
 		D29B49151D928D7F00259928 /* preview9@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29B48FB1D928D7F00259928 /* preview9@3x.png */; };
+		D29B49181D929C4C00259928 /* LDFloatBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29B49171D929C4C00259928 /* LDFloatBubbleView.m */; };
 		D2AC31181D671C2600AAC7C1 /* LDChatParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC31171D671C2600AAC7C1 /* LDChatParser.m */; };
 		D2AE56391D486852005BB832 /* LDAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE56381D486852005BB832 /* LDAppSettingViewController.m */; };
 		D2AE563C1D4871EF005BB832 /* LDSettingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE563B1D4871EF005BB832 /* LDSettingNavigationController.m */; };
@@ -250,6 +251,8 @@
 		D29B48F91D928D7F00259928 /* preview8@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview8@3x.png"; sourceTree = "<group>"; };
 		D29B48FA1D928D7F00259928 /* preview9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview9@2x.png"; sourceTree = "<group>"; };
 		D29B48FB1D928D7F00259928 /* preview9@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview9@3x.png"; sourceTree = "<group>"; };
+		D29B49161D929C4C00259928 /* LDFloatBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDFloatBubbleView.h; sourceTree = "<group>"; };
+		D29B49171D929C4C00259928 /* LDFloatBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDFloatBubbleView.m; sourceTree = "<group>"; };
 		D2AC31161D671C2600AAC7C1 /* LDChatParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDChatParser.h; sourceTree = "<group>"; };
 		D2AC31171D671C2600AAC7C1 /* LDChatParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDChatParser.m; sourceTree = "<group>"; };
 		D2AE56371D486852005BB832 /* LDAppSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDAppSettingViewController.h; sourceTree = "<group>"; };
@@ -598,6 +601,8 @@
 				D2F907A41D3CA066006C987F /* LDLobbyRoomView.m */,
 				D2FA97861D3F4AF600ADB180 /* LDChatBubbleView.h */,
 				D2FA97871D3F4AF600ADB180 /* LDChatBubbleView.m */,
+				D29B49161D929C4C00259928 /* LDFloatBubbleView.h */,
+				D29B49171D929C4C00259928 /* LDFloatBubbleView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				D2F9076E1D3C705D006C987F /* AppDelegate.m in Sources */,
 				D2F907A21D3C9D5C006C987F /* LDRoomItem.m in Sources */,
 				D293D80F1D586A0800F8E255 /* LDCookies.m in Sources */,
+				D29B49181D929C4C00259928 /* LDFloatBubbleView.m in Sources */,
 				D2FA977F1D3F2F6800ADB180 /* LDTouchTransparentView.m in Sources */,
 				D204E5201D62DA2700E987D6 /* UIImage+FixOrientation.m in Sources */,
 				D27022C01D4214CA00A8B311 /* LDBlurViewController.m in Sources */,
