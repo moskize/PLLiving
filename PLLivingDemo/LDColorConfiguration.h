@@ -28,7 +28,8 @@
 #define kcolIconBackground GetColor("CCCCCC")
 
 #define kcolSplitLine GetColor("FFF3F3F3")
-#define kcolBubbleBackground GetColor("FFDCDCDC")
+#define kcolGraySplitLine GetColor("3D3D3D")
+#define kcolBubbleBackground GetColor("3E3F3F")
 
 #define kcolLoginBackgroundGradient0 GetColor("E6E6E6")
 #define kcolLoginBackgroundGradient1 GetColor("F4F4F4")

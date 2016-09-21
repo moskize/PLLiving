@@ -31,9 +31,9 @@
     [super viewDidLoad];
     
     UIView *panel = ({
-        UIView *panel = [[UIView alloc] init];
+        UIVisualEffectView *panel = [[UIVisualEffectView alloc] init];
         [self.view addSubview:panel];
-        panel.backgroundColor = [UIColor whiteColor];
+        panel.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         [panel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.and.left.equalTo(self.view);
             make.right.equalTo(self.view).with.offset(-95);
@@ -78,7 +78,7 @@
     self.userNameLabel = ({
         UILabel *label = [[UILabel alloc] init];
         [panel addSubview:label];
-        label.textColor = kcolTextNormal;
+        label.textColor = [UIColor whiteColor];
         label.font = [UIFont systemFontOfSize:16];
         label.text = [LDUser sharedUser].userName;
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +91,7 @@
     UIView *topLine = ({
         UIView *line = [[UIView alloc] init];
         [panel addSubview:line];
-        line.backgroundColor = kcolSplitLine;
+        line.backgroundColor = kcolGraySplitLine;
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(panel).with.offset(452);
             make.left.equalTo(panel).with.offset(17);
@@ -105,7 +105,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         [panel addSubview:button];
         [button setTitle:LDString("setting") forState:UIControlStateNormal];
-        [button setTintColor:kcolTextButton];
+        [button setTintColor:[UIColor whiteColor]];
         [button addTarget:self action:@selector(_onPressedSettingButton:)
          forControlEvents:UIControlEventTouchUpInside];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +119,7 @@
     UIView *mediumLine = ({
         UIView *line = [[UIView alloc] init];
         [panel addSubview:line];
-        line.backgroundColor = kcolSplitLine;
+        line.backgroundColor = kcolGraySplitLine;
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.settingButton.mas_bottom);
             make.left.equalTo(panel).with.offset(17);
@@ -133,7 +133,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         [panel addSubview:button];
         [button setTitle:LDString("test-play") forState:UIControlStateNormal];
-        [button setTintColor:kcolTextButton];
+        [button setTintColor:[UIColor whiteColor]];
         [button addTarget:self action:@selector(_onPressedSettingButton:)
          forControlEvents:UIControlEventTouchUpInside];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,7 +146,7 @@
     ({
         UIView *line = [[UIView alloc] init];
         [panel addSubview:line];
-        line.backgroundColor = kcolSplitLine;
+        line.backgroundColor = kcolGraySplitLine;
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.testPlayButton.mas_bottom);
             make.left.equalTo(panel).with.offset(17);
