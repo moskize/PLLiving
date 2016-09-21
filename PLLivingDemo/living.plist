@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>HttpServerURL</key>
-	<string>fill_your_http_server_url</string>
+	<string>http://pili-livedemo.qiniu.com</string>
 	<key>ChatRoomWebsocketURL</key>
-	<string>fill_your_chat_room_websocket_url</string>
+	<string>http://pili-livedemo.qiniu.com</string>
 	<key>WechatAppID</key>
-	<string>fill_your_wechat_app_id</string>
+	<string>wxc8db39b6481b395b</string>
 	<key>ImageDomain</key>
-	<string>fill_your_image_domain</string>
+	<string>live-avatar.qbox.net</string>
 </dict>
 </plist>
