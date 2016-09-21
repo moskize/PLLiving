@@ -12,7 +12,7 @@
 
 @protocol LDUserSettingViewControllerDelegate <NSObject>
 
-- (void)setTestPlayURL:(NSString *)testPlayURL;
+- (void)changeTestPlayURL:(NSString *)testPlayURL;
 
 @end
 

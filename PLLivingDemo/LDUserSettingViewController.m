@@ -169,7 +169,7 @@
     [LDAlertUtil alertParentViewController:self title:LDString("please-input-test-play-url")
                                description:@"" complete:^(NSString *text) {
         if (text) {
-            [self.delegate setTestPlayURL:text];
+            [self.delegate changeTestPlayURL:text];
         }
     }];
 }

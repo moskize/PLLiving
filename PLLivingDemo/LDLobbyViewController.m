@@ -40,6 +40,7 @@ typedef enum {
 
 @property (nonatomic, strong) NSString *testPlayURL;
 
+@property (nonatomic, strong) NSArray<LDRoomItem *> *originalRoomItems;
 @property (nonatomic, strong) NSArray<LDRoomItem *> *roomItems;
 @property (nonatomic, strong) UIView *emptyBackgroundView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -59,8 +60,8 @@ typedef enum {
     if (self = [super init]) {
         self.navigationConstraints = [[LDViewConstraintsStateManager alloc] init];
         self.startBroadcastingConstraints = [[LDViewConstraintsStateManager alloc] init];
-        self.roomItems = @[];
         self.timerKeeper = [[_LDLobbyTimerKeeper alloc] initWithLobbyViewController:self];
+        [self refreshRoomItems:@[]];
     }
     return self;
 }
@@ -75,9 +76,45 @@ typedef enum {
     return YES;
 }
 
-- (void)setTestPlayURL:(NSString *)testPlayURL
+- (void)changeTestPlayURL:(NSString *)testPlayURL
 {
+    BOOL insertTestPlayURL = (!self.testPlayURL && testPlayURL);
+    
     self.testPlayURL = testPlayURL;
+    [self refreshRoomItems:self.originalRoomItems];
+    
+    NSArray<NSIndexPath *> *testPlayURLIndex = @[[NSIndexPath indexPathForRow:self.roomItems.count - 1
+                                                                    inSection:0]];
+    if (insertTestPlayURL) {
+        [self.tableView insertRowsAtIndexPaths:testPlayURLIndex withRowAnimation:UITableViewRowAnimationLeft];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:testPlayURLIndex withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)refreshRoomItems:(NSArray<LDRoomItem *> *)roomItems
+{
+    self.originalRoomItems = roomItems;
+    NSMutableArray<LDRoomItem *> *refreshedRoomItems = [[NSMutableArray alloc] init];
+    for (LDRoomItem *roomItem in roomItems) {
+        [refreshedRoomItems addObject:roomItem];
+    }
+    if (self.testPlayURL) {
+        [refreshedRoomItems addObject:({
+            LDRoomItem *roomItem = [[LDRoomItem alloc] init];
+            roomItem.authorID = @"110";
+            roomItem.authorName = @"moskize";
+            roomItem.authorIconURL = @"https://pic3.zhimg.com/d0a2203926f8eb5c97e66a4fd4bdd372_xl.jpg";
+            roomItem.previewURL = @"";
+            roomItem.rtmpPlayURL = self.testPlayURL;
+            roomItem.m3u8PlayURL = self.testPlayURL;
+            roomItem.flvPlayURL = self.testPlayURL;
+            roomItem.title = @"测试流虚拟房间";
+            roomItem.createdTime = [NSDate date];
+            roomItem;
+        })];
+    }
+    self.roomItems = refreshedRoomItems;
 }
 
 - (void)viewDidLoad
@@ -249,9 +286,9 @@ typedef enum {
             roomItem.flvPlayURL = roomJson[@"FlvPlayURL"];
             [roomItems addObject:roomItem];
         }
-        NSArray<LDRoomItem *> *originalRoomItems = self.roomItems;
-        self.roomItems = roomItems;
+        NSArray<LDRoomItem *> *originalRoomItems = self.originalRoomItems;
         self.emptyBackgroundView.hidden = roomItems.count > 0;
+        [self refreshRoomItems:roomItems];
         [self _playRefreshRoomsAnimationWithOriginalList:originalRoomItems withTargetList:roomItems];
         
     } withFail:^(NSError * _Nullable responseError) {
