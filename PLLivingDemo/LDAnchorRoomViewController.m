@@ -225,13 +225,13 @@ typedef enum {
         // 在关闭之后，也没有必要对推流地址进行处理了。
         if (strongSelf && !strongSelf.didClosed) {
             
-            self.pushingURL = [NSURL URLWithString:resultJSON[@"PushURL"]];
-            self.roomItem = [self _roomItemWithJSON:resultJSON[@"Stream"]];
+            strongSelf.pushingURL = [NSURL URLWithString:resultJSON[@"PushURL"]];
+            strongSelf.roomItem = [self _roomItemWithJSON:resultJSON[@"Stream"]];
             
-            NSLog(@"get pushing url %@", self.pushingURL);
+            NSLog(@"get pushing url %@", strongSelf.pushingURL);
             strongSelf.roomPanelViewControoler.roomItem = self.roomItem;
             [strongSelf.roomPanelViewControoler connectToWebSocket];
-            [strongSelf setPushingURL:self.pushingURL];
+            [strongSelf setPushingURL:strongSelf.pushingURL];
             [strongSelf.broadcastingSemaphore signal]; //接收到了推流地址。
             [strongSelf.createRoomSemaphore signal]; //房间已经创建好了。
         }
